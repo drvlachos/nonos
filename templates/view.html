@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <title>grkin_data PDF, CSV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+</head>
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+#myDIV {
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: lightblue;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<button onclick="myFunction()">Εμφάνιση / Κλείσιμο  Αποτελεσμάτων</button>
+
+<div id="myDIV">
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <h3>ΓΡΑΦΕΙΟ ΚΙΝΗΣΗΣ</h3>
+
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+      <table class="searchable sortable", border="5">
+<table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:80%">
+        <thead>
+            <td>Α/Α</td>
+            <td><b>ΟΔΗΓΟΣ</b></td>
+            <td>ΠΙΝΑΚΙΔΑ</td>
+            <td>ΗΜΕΡΟΜΗΝΙΑ</td>
+            <td>ΣΚΟΠΟΣ</td>
+            <td>ΔΙΑΔΡΟΜΗ</td>
+            <td>ΧΙΛΙΟΜΕΤΡΑ</td>
+            <td>ΠΑΡΑΤΗΡΗΣΕΙΣ</td>
+            <td>DELETE</td>
+        </thead>
+
+        {% for row in rows %}
+
+            <tr>
+                <td>{{row[7]}}</td>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[6]}}</td>
+                <td>{{row[5]}}</td>
+                <td><form action="/delete" method="post">
+         <input type="text" name="rid" value={{row[7]}} hidden>
+         <input type="submit" class="btn btn-danger" value="Delete">
+    </form>
+</td>
+
+
+
+
+            </tr>
+
+        {% endfor %}
+    </table>
+
+    <script>
+ /*
+            var index, table = document.getElementById('example');
+            for(var i = 1; i < table.rows.length; i++)
+            {
+                table.rows[i].cells[7].onclick = function()
+                {
+                    var c = confirm("Θέλεις να διαγράψεις αυτήν εγγραφή");
+                    if(c === true)
+                    {
+                        index = this.parentElement.rowIndex;
+                        table.deleteRow(index);
+                    }
+
+                    //console.log(index);
+                };
+
+            }
+*/
+        </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script>
+   $(document).ready(function() {
+       var table = $('#example').DataTable( {
+           lengthChange: false,
+           buttons: [ 'copy', 'excel', 'csv', 'pdf', 'colvis' ]
+       } );
+
+       table.buttons().container()
+           .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+   } );
+     </script>
+    <a href="/">Επιστροφή στην Αρχική Σελίδα</a>
+   </-div>
+    </body>  
+    </html> 

@@ -1,0 +1,114 @@
+  <meta charset="UTF-8">
+
+<html> <head>   <title>e_grkinor </title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+	<!-- Start VisualLightBox.com HEAD section
+
+		<!link rel="stylesheet" href="diveder_files/vlb_files0/vlightbox0.css" type="text/css" />
+
+		<!link rel="stylesheet" href="diveder_files/vlb_files0/visuallightbox.css" type="text/css" media="screen" />
+<!script src="diveder_files/vlb_engine/jquery.min.js" type="text/javascript"><!/script>-->
+
+		<!script src="diveder_files/vlb_engine/visuallightbox.js" type="text/javascript"><!/script>
+
+		<!-- End VisualLightBox.com HEAD section -->
+
+</head> <body>  <div class="container">
+
+    <div
+class="toppane"> <img  align="left" src="{{ url_for('static', filename='images/oroposlogo.jpg') }}" width="200" height="100"><h1>ΔΗΜΟΣ ΩΡΩΠΟΥ - Γραφείο Κίνησης - ΥΠΗΡΕΣΙΑ</h1>
+
+</div>
+
+
+    <div class="leftpane">
+    <h2 style="line-height:0;">Πρόσθεσε Οδηγό</h2>
+  <form action="/adddriver" method="post">
+    <label for="driver">Όνομα Οδηγού:</label><br>
+    <input type="text" id="driver" name="name" ><br>
+    <label for="telephone">Κινητό Τηλ:</label><br>
+    <input type="text" id="Telephone" name="telephone" min="6900000000" max="6999999999" ><br>
+    <input type="submit" value="Καταχώρηση Οδηγού">
+  </form>
+
+  <h2 style="line-height:0;">Πρόσθεσε Πινακίδα</h2>
+  <form action="/addnuplate" method="post">
+    <label for="plate">Αρ. Κυκλοφορίας:</label><br>
+    <input type="text" id="Plate" name="nuplate" ><br>
+    <input type="submit" value="Καταχώρηση Πινακίδας">
+  </form>
+
+  <h2 style="line-height:0;">Πρόσθεσε ΣΚΟΠΟ</h2>
+  <form action="/addpurp" method="post">
+    <label for="scopo">Σκοπός:</label><br>
+    <input type="text" id="Scopo" name="purp" ><br>
+    <input type="submit" value="Submit">
+  </form>
+
+<h2 style="line-height:0;">Πρόσθεσε ΔΙΑΔΡΟΜΗ</h2>
+  <form action="/adddest" method="post">
+    <label for="diadromi">Διαδρομή:</label><br>
+    <input type="text" id="Diadromi" name="dest" ><br>
+    <input type="submit" value="Καταχώρηση">
+  </form>
+<form action="http://oropos.gov.gr/"><br>
+    <input button type="submit" value="Διαχειριστής" /><br>
+        <br>
+</form>
+</body>
+
+</div>
+
+    <div class="middlepane">
+        <h1>Διαταγή Πορείας</h1>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <h2>Γραφείο Κίνησης</h2>
+  <form action="" method="post" style="font-size: 18px; font-weight:600;>
+    <label for="driver">ΟΔΗΓΟΣ:</label> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <select type="text" id="driver" name="driver" ><br>
+    {% for driver in drivers%}
+    <option value="{{driver[0]}}">{{driver[0]}}</option>
+    {% endfor %}
+</select><br>
+      <br>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <label for="nuplate">ΠΙΝΑΚΙΔΑ:</label> &nbsp&nbsp&nbsp&nbsp&nbsp
+    <select type="text" id="nuplate" name="nuplate"  required><br>
+    {% for pinakida in pinakides%}
+    <option value="{{pinakida[0]}}">{{pinakida[0]}}</option>
+    {% endfor %}
+</select><br>
+      <br>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <label for="purp">ΣΚΟΠΟΣ:</label> &nbsp &nbsp &nbsp &nbsp &nbsp
+    <select type="text" id="purp" name="purp" required ><br>
+    {% for scopos in scoposes%}
+    <option value="{{scopos[0]}}">{{scopos[0]}}</option>
+    {% endfor %}
+</select><br>
+      <br>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <label for="dest">ΔΙΑΔΡΟΜΗ:</label> &nbsp &nbsp &nbsp
+    <select type="text" id="dest" name="dest" required ><br>
+    {% for dests in desteses%}
+    <option value="{{dests[0]}}">{{dests[0]}}</option>
+    {% endfor %}
+</select><br>
+<br>
+    <label for="date">ΗΜΕΡΟΜΗΝΙΑ:</label>
+    <input type="date" id="date" name="date" min="2021-03-01" max="2025-01-01" required><br><br>
+    <label for="k">ΟΔΟΜΕΤΡΟ:</label> &nbsp&nbsp&nbsp&nbsp
+    <input type="number" id="k" name="km_start" min="0" max="999999" required ><br><br>
+    <label for="s">Παρατηρήσεις: </label>
+    <input type="text" id="s" name="r_from" ><br><br>
+
+    <input type="submit" value="Καταχώρηση - (ΟΧΙ sms)" style="font-size:18px; font-weight:600;"><br><br>
+    <input type="submit"  name= "sms" value="ΑΝΑΦΟΡΑ - (Με sms)" style="font-size:18px; font-weight:600;">
+
+  </form>
+
+
+
+</html>
+
